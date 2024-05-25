@@ -6,6 +6,7 @@ import { Metadata } from 'next'
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/constants'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import Background from '@/components/background'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -92,6 +93,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontSans.variable
         )}
       >
+        <Background />
+
         <Header />
         <main className='relative mx-auto mb-16 max-w-4xl px-8 py-24'>
           {children}
