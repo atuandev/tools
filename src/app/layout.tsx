@@ -7,7 +7,7 @@ import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/constants'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Background from '@/components/background'
-import { ThemeProvider } from './provider'
+import Providers from './providers'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -94,12 +94,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontSans.variable
         )}
       >
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='system'
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           <Background />
 
           <Header />
@@ -107,7 +102,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             {children}
           </main>
           <Footer />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )

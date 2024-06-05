@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import Logo from './logo'
 import { SiGithub } from '@icons-pack/react-simple-icons'
