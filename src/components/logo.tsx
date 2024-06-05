@@ -7,5 +7,5 @@ const pacifico = Pacifico({
 })
 
 export default function Logo() {
-  return <div className={cn(pacifico.className, 'font-bold text-xl')}>atuandev</div>
+  return <div className={cn(pacifico.className, 'tracking-wider text-xl')}>atuandev</div>
 }
