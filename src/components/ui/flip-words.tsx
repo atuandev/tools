@@ -1,87 +1,43 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, LayoutGroup } from 'framer-motion'
-import { cn } from '@/lib/utils'
-let interval: any
 
-export const FlipWords = ({
-  words,
-  duration = 3000,
-  className
-}: {
-  words: string[]
-  duration?: number
-  className?: string
-}) => {
-  const [currentWord, setCurrentWord] = useState(words[0])
+import { useAnimate } from 'framer-motion'
+import { useEffect } from 'react'
+
+type Word = {
+  text: string
+  className: string
+}
+
+type FlipWordsProps = {
+  words: Word[]
+}
+
+export const FlipWords = ({ words }: FlipWordsProps) => {
+  const [scope, animate] = useAnimate()
 
   useEffect(() => {
-    startAnimation()
-
-    return () => {
-      clearInterval(interval)
-    }
-  }, [])
-
-  const startAnimation = () => {
-    let i = 0
-    interval = setInterval(() => {
-      i++
-      if (i === words.length) {
-        i = 0
+    animate(
+      [
+        [scope.current, { y: '0%' }, { duration: 0 }],
+        [scope.current, { y: '-25%' }, { duration: 0.3, at: '+1.3' }],
+        [scope.current, { y: '-50%' }, { duration: 0.3, at: '+1.3' }],
+        [scope.current, { y: '-75%' }, { duration: 0.3, at: '+1.3' }]
+      ],
+      {
+        repeat: Number.POSITIVE_INFINITY
       }
-      const word = words[i]
-      setCurrentWord(word)
-    }, duration)
-  }
+    )
+  }, [animate, scope])
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 10
-        }}
-        animate={{
-          opacity: 1,
-          y: 0
-        }}
-        transition={{
-          duration: 0.4,
-          ease: 'easeInOut',
-          type: 'spring',
-          stiffness: 100,
-          damping: 10
-        }}
-        exit={{
-          opacity: 0,
-          y: -40,
-          x: 40,
-          filter: 'blur(8px)',
-          scale: 2,
-          position: 'absolute'
-        }}
-        className={cn(
-          'z-10 inline-block relative text-left text-neutral-900 dark:text-neutral-100 px-2',
-          className
-        )}
-        key={currentWord}
-      >
-        {currentWord.split('').map((letter, index) => (
-          <motion.span
-            key={currentWord + index}
-            initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{
-              delay: index * 0.08,
-              duration: 0.4
-            }}
-            className='inline-block bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent'
-          >
-            {letter}
-          </motion.span>
+    <div className='inline-grid h-7 overflow-hidden sm:h-10'>
+      <div ref={scope}>
+        {words.map(({ text, className }, index) => (
+          <div className={className} key={index}>
+            {text}
+          </div>
         ))}
-      </motion.div>
-    </AnimatePresence>
+      </div>
+    </div>
   )
 }
