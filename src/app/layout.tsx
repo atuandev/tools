@@ -96,7 +96,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Background />
 
         <Header />
-        <main className='relative mx-auto mb-16 max-w-4xl px-8 py-24'>
+        <main className='relative mx-auto mb-16 max-w-6xl px-8 py-24'>
           {children}
         </main>
         <Footer />
