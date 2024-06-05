@@ -19,7 +19,7 @@ const TOOLS = [
       {
         label: 'Color Converter',
         link: '/convertor/color-converter',
-        keywords: ['Convertor', 'Color', 'Hex', 'RGB', 'HSL', 'CSS'],
+        keywords: ['Convertor', 'Color', 'Hex', 'RGB', 'HSL', 'CSS', 'Picker'],
         color: '#fd7e14',
         icon: PipetteIcon
       },
