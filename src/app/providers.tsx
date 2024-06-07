@@ -1,5 +1,6 @@
 'use client'
 
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { ThemeProvider } from 'next-themes'
 
 type ProvidersProps = {
@@ -15,7 +16,7 @@ export default function Providers({ children }: ProvidersProps) {
       enableColorScheme
       disableTransitionOnChange
     >
-      {children}
+      <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
     </ThemeProvider>
   )
 }
