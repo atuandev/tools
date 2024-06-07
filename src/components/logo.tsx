@@ -8,6 +8,10 @@ const pacifico = Pacifico({
   weight: ['400']
 })
 
-export default function Logo() {
-  return <div className={cn(pacifico.className, 'tracking-wider text-xl')}>atuandev</div>
+export function Logo() {
+  return (
+    <div className={cn(pacifico.className, 'tracking-wider text-xl')}>
+      atuandev
+    </div>
+  )
 }

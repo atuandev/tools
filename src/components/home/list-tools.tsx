@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 import { Input } from '@/components/ui/input'
 import { Tool } from '@/lib/types'
-import ListCardTools from './list-card-tools'
+import { ListCardTools } from './list-card-tools'
 
 const TOOLS = [
   {
@@ -54,7 +54,7 @@ const TOOLS = [
   }
 ]
 
-export default function ListTools() {
+export function ListTools() {
   const [value, setValue] = useState('')
 
   const filter = (tool: Tool): boolean =>

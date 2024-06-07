@@ -30,7 +30,7 @@ const WORDS = [
   }
 ]
 
-export default function Hero() {
+export function Hero() {
   return (
     <div className='my-12 space-y-8'>
       <motion.div

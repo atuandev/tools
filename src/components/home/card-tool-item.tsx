@@ -1,13 +1,14 @@
 'use client'
 
-import { Tool } from '@/lib/types'
 import Link from 'next/link'
+
+import { Tool } from '@/lib/types'
 
 type CardToolItemProps = {
   tool: Tool
 }
 
-export default function CardToolItem({ tool }: CardToolItemProps) {
+export function CardToolItem({ tool }: CardToolItemProps) {
   const Icon = tool.icon
 
   return (

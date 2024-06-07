@@ -4,9 +4,9 @@ import { Metadata } from 'next'
 
 import { cn } from '@/lib/utils'
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/constants'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import Background from '@/components/background'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { Background } from '@/components/background'
 import Providers from './providers'
 
 const fontSans = FontSans({
