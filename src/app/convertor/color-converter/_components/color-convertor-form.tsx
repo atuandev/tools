@@ -11,6 +11,8 @@ import a11yPlugin from 'colord/plugins/a11y'
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { CardItem } from './card-item'
+import { Heading } from './heading'
 
 extend([hwbPlugin, cmykPlugin, lchPlugin, namesPlugin, a11yPlugin])
 
@@ -24,11 +26,7 @@ type Lists = {
   data: List[]
 }
 
-type ItemProps = {
-  list: List[]
-}
-
-export default function ColorConvertorForm() {
+export function ColorConvertorForm() {
   const [color, setColor] = useState<string>('#ffffff')
   const lists: Lists[] = [
     {
@@ -102,7 +100,7 @@ export default function ColorConvertorForm() {
             style={{ backgroundColor: color }}
           />
         </Label>
-        <input
+        <Input
           className='invisible absolute left-0 top-2'
           type='color'
           id='color'
@@ -110,37 +108,19 @@ export default function ColorConvertorForm() {
         />
         <Input value={color} onChange={e => setColor(e.target.value)} />
       </div>
+      
       <div className='my-8 grid w-full gap-4 sm:grid-cols-2 bg-background/50 backdrop-blur-sm rounded-md'>
         {lists.map(list => {
           const { label, data } = list
 
           return (
             <div key={label} className='rounded-lg border p-4'>
-              <div className='mb-8 text-center text-3xl font-bold'>{label}</div>
-              <Items list={data} />
+              <Heading title={label} />
+              <CardItem list={data} />
             </div>
           )
         })}
       </div>
-    </>
-  )
-}
-
-const Items = (props: ItemProps) => {
-  const { list } = props
-
-  return (
-    <>
-      {list.map(item => {
-        const { label, value } = item
-
-        return (
-          <div className='mb-4 border-b-4' key={label}>
-            <div className='text-sm font-medium'>{label}</div>
-            <div className='my-2 text-lg font-bold'>{value}</div>
-          </div>
-        )
-      })}
     </>
   )
 }
