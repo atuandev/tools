@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ImageIcon, KeyIcon, PipetteIcon, TextIcon } from 'lucide-react'
+import { ImageIcon, KeyIcon, KeyboardIcon, PipetteIcon, TextIcon } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 import { Input } from '@/components/ui/input'
@@ -51,6 +51,18 @@ const TOOLS = [
         icon: KeyIcon
       }
     ]
+  },
+  {
+    label: 'Tester',
+    links: [
+      {
+        label: 'Keyboard Tester',
+        link: '/tester/keyboard-tester',
+        keywords: ['Tester', 'Keyboard', 'Test'],
+        color: '#be4bdb',
+        icon: KeyboardIcon
+      }
+    ]
   }
 ]
 
@@ -80,6 +92,7 @@ export function ListTools() {
     >
       <div className='flex flex-col items-start'>
         <Input
+          className='bg-background/50 backdrop-blur-sm'
           placeholder='Search'
           value={value}
           onChange={e => setValue(e.target.value)}

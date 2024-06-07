@@ -62,4 +62,8 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    --scroll-behavior: smooth !important;
+    scroll-behavior: smooth !important;
+  }
 }
