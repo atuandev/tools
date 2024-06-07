@@ -3,6 +3,11 @@
 import Link from 'next/link'
 import { SiGithub } from '@icons-pack/react-simple-icons'
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from '@/components/ui/tooltip'
 import { Logo } from '@/components/logo'
 import { ModeToggle } from '@/components/mode-toggle'
 
@@ -16,14 +21,22 @@ export function Header() {
 
         <div className='flex items-center gap-3'>
           <ModeToggle />
-          <a
-            href='https://github.com/atuandev'
-            target='_blank'
-            rel='noreferrer noopener'
-            aria-label='GitHub'
-          >
-            <SiGithub />
-          </a>
+
+          <Tooltip>
+            <TooltipTrigger>
+              <a
+                href='https://github.com/atuandev'
+                target='_blank'
+                rel='noreferrer noopener'
+                aria-label='GitHub'
+              >
+                <SiGithub />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent sideOffset={10}>
+              <p>@atuandev</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </div>
     </header>
