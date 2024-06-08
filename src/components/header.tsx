@@ -24,14 +24,14 @@ export function Header() {
 
           <Tooltip>
             <TooltipTrigger>
-              <a
+              <Link
                 href='https://github.com/atuandev'
                 target='_blank'
                 rel='noreferrer noopener'
                 aria-label='GitHub'
               >
                 <SiGithub />
-              </a>
+              </Link>
             </TooltipTrigger>
             <TooltipContent sideOffset={10}>
               <p>@atuandev</p>
