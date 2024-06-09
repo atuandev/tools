@@ -12,7 +12,7 @@ import a11yPlugin from 'colord/plugins/a11y'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { CardItem } from './card-item'
-import { Heading } from './heading'
+import { Heading } from '@/components/heading'
 
 extend([hwbPlugin, cmykPlugin, lchPlugin, namesPlugin, a11yPlugin])
 

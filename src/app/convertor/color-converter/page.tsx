@@ -1,6 +1,6 @@
 import { Container } from '@/components/container'
+import { Heading } from '@/components/heading'
 import { ColorConvertorForm } from './_components/color-convertor-form'
-import { Heading } from './_components/heading'
 
 export default function ColorConverterPage() {
   return (

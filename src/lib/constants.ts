@@ -8,8 +8,8 @@ import {
 
 export const SITE_URL =
   process.env.NODE_ENV === 'production'
-    ? 'https://tools-online.vercel.app'
-    : 'http://localhost:3000'
+    ? process.env.NEXT_PUBLIC_LOCAL_URL
+    : process.env.NEXT_PUBLIC_URL
 
 export const SITE_NAME = 'Tools Online'
 export const SITE_TITLE = 'Tools Online'

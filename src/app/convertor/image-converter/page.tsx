@@ -1,6 +1,6 @@
 import { Container } from '@/components/container'
-import { Heading } from './_components/heading'
 import { FormDropzone } from './_components/form-dropzone'
+import { Heading } from '@/components/heading'
 
 export default function ImageConvertorPage() {
   return (

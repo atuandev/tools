@@ -1,10 +1,10 @@
 export async function generateMetadata() {
   return {
-    title: 'Image Converter'
+    title: 'Word Counter'
   }
 }
 
-export default function ImageConverterLayout({
+export default function WordCounterLayout({
   children
 }: {
   children: React.ReactNode
