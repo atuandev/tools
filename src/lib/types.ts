@@ -14,9 +14,9 @@ export type ImageFile = {
   name: string
   extension: string
   size: string
+  preview: string
   to?: FileOption
   result?: string
-  preview: string
 }
 
 export type FileOption = (typeof fileOptions)[number]['value']

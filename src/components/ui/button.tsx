@@ -17,7 +17,8 @@ const buttonVariants = cva(
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
-        primary: 'bg-sky-600 dark:bg-sky-700 text-white hover:bg-sky-700 hover:dark:bg-sky-800',
+        primary: 'bg-sky-600 dark:bg-sky-700 text-white hover:bg-sky-600/90 hover:dark:bg-sky-700/90',
+        success: 'bg-emerald-600 dark:bg-emerald-700 text-white hover:bg-emerald-600/90 hover:dark:bg-emerald-700/90',
         transparent: 'bg-transparent text-white hover:bg-white/20',
         expandIcon:
           'group relative text-primary-foreground bg-primary hover:bg-primary/90',

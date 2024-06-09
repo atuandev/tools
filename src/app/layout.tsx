@@ -1,12 +1,13 @@
 import '@/styles/globals.css'
-import { Inter as FontSans } from 'next/font/google'
 import { Metadata } from 'next'
+import { Inter as FontSans } from 'next/font/google'
 
-import { cn } from '@/lib/utils'
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/constants'
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 import { Background } from '@/components/background'
+import { Footer } from '@/components/footer'
+import { Header } from '@/components/header'
+import { Toaster } from '@/components/ui/sonner'
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/constants'
+import { cn } from '@/lib/utils'
 import Providers from './providers'
 
 const fontSans = FontSans({
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <Providers>
           <Background />
+          <Toaster richColors />
 
           <Header />
           <main className='relative mx-auto mb-16 max-w-6xl px-8 py-24'>
