@@ -26,7 +26,6 @@ import { FileItem } from './file-item'
 
 export function FormDropzone() {
   const [files, setFiles] = useState<ImageFile[]>([])
-  console.log('FormDropzone ~ files:', files)
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     acceptedFiles.forEach(file => {
