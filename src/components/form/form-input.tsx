@@ -17,7 +17,6 @@ type FormInputProps = {
   disabled?: boolean
   errors?: Record<string, string[] | undefined>
   className?: string
-  defaultValue?: string
   onBlur?: () => void
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }

@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
 
-interface FormCopyProps {
+interface FormInputCopyProps {
   id: string
   label?: string
   type?: string
@@ -20,7 +20,7 @@ interface FormCopyProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const FormCopy = forwardRef<HTMLInputElement, FormCopyProps>(
+export const FormInputCopy = forwardRef<HTMLInputElement, FormInputCopyProps>(
   (
     {
       id,
@@ -46,8 +46,8 @@ export const FormCopy = forwardRef<HTMLInputElement, FormCopyProps>(
     }
 
     return (
-      <div className='space-y-2'>
-        <div className='space-y-1'>
+      <div className='space-y-2 w-full'>
+        <div className='space-y-1 w-full'>
           {label ? (
             <Label
               htmlFor={id}
@@ -66,9 +66,11 @@ export const FormCopy = forwardRef<HTMLInputElement, FormCopyProps>(
               type={type}
               placeholder={placeholder}
               disabled={disabled}
-              className={cn(className, '')}
+              className={cn(
+                className,
+                'focus-visible:ring-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 outline-none'
+              )}
               onBlur={onBlur}
-              aria-describedby={`${id}-error`}
               readOnly={readonly}
             />
             <div
@@ -103,4 +105,4 @@ export const FormCopy = forwardRef<HTMLInputElement, FormCopyProps>(
   }
 )
 
-FormCopy.displayName = 'FormCopy'
+FormInputCopy.displayName = 'FormInputCopy'
