@@ -8,16 +8,18 @@ import { z } from 'zod'
 
 import { FormCheckbox } from '@/components/form/form-checkbox'
 import { FormInput } from '@/components/form/form-input'
-import { FormInputCopy } from '@/components/form/form-input-copy'
+import { FormTextareaCopy } from '@/components/form/form-input-copy'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 
+const DEFAULT_PASSWORD_LENGTH = 32
+
 const passwordSchema = z.object({
-  length: z.number().int().min(1).max(100)
+  length: z.number().int().min(1).max(10000).default(DEFAULT_PASSWORD_LENGTH)
 })
 
 export function FormPasswordGenerator() {
-  const [length, setLength] = useState<number>(12)
+  const [length, setLength] = useState<number>(DEFAULT_PASSWORD_LENGTH)
   const [uppercase, setUppercase] = useState<boolean>(true)
   const [lowercase, setLowercase] = useState<boolean>(true)
   const [digits, setDigits] = useState<boolean>(true)
@@ -26,7 +28,7 @@ export function FormPasswordGenerator() {
   const [password, setPassword] = useState<string>('')
 
   const handleClear = () => {
-    setLength(12)
+    setLength(DEFAULT_PASSWORD_LENGTH)
     setUppercase(true)
     setLowercase(true)
     setDigits(true)
@@ -147,14 +149,14 @@ export function FormPasswordGenerator() {
         </div>
 
         {password && (
-          <div className='mt-4 flex items-end gap-2'>
-            <FormInputCopy
+          <div className='mt-4 flex flex-col gap-2'>
+            <FormTextareaCopy
               id='password'
               label='Generated Password'
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              className='pr-12'
+              maxHeight={480}
               readonly
-              className='pr-12 truncate'
             />
             <Button variant='success' onClick={handleSavePassword}>
               <SaveIcon className='size-5 mr-2' />
