@@ -5,6 +5,7 @@ import { SaveIcon } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { useEventListener } from 'usehooks-ts'
 
 import { FormCheckbox } from '@/components/form/form-checkbox'
 import { FormInput } from '@/components/form/form-input'
@@ -95,6 +96,15 @@ export function FormPasswordGenerator() {
     const blob = new Blob([password], { type: 'text/plain' })
     FileSaver.saveAs(blob, 'password.txt')
   }
+
+  const onGeneratePasswordKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      handleGenerate()
+    }
+  }
+
+  useEventListener('keydown', onGeneratePasswordKeyDown)
 
   return (
     <div className='w-full my-12'>

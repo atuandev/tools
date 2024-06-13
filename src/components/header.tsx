@@ -13,7 +13,12 @@ import { ModeToggle } from '@/components/mode-toggle'
 
 export function Header() {
   return (
-    <header className='fixed inset-x-0 top-0 z-40 bg-background/20 backdrop-blur-[10px] shadow-sm saturate-100'>
+    <header
+      className='fixed inset-x-0 top-0 z-40 bg-background/20 backdrop-blur-[10px] shadow-sm saturate-100'
+      style={{
+        WebkitBackdropFilter: 'blur(10px)'
+      }}
+    >
       <div className='mx-auto max-w-6xl flex items-center justify-between px-8 h-14'>
         <Link href='/' aria-label='Home' title='Home'>
           <Logo />

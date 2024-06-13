@@ -35,7 +35,7 @@ export function FileItem({
 
   return (
     <div className='w-full bg-background/60 backdrop-blur-md shadow-sm border rounded-md p-4 flex flex-col sm:flex-row justify-between sm:items-center items-start gap-2'>
-      <div className='flex items-center gap-2'>
+      <div className='w-full md:w-auto flex items-center gap-2'>
         <Image
           src={preview}
           width={48}
@@ -43,13 +43,13 @@ export function FileItem({
           alt={name}
           className='rounded-lg border shadow-sm aspect-square object-cover pointer-events-none'
         />
-        <div className='flex flex-col gap-1'>
-          <p className='font-semibold'>{name}</p>
+        <div className='w-[80%] flex flex-col gap-1'>
+          <p className='text-sm md:text-base font-semibold truncate'>{name}</p>
           <p className='text-muted-foreground text-sm'>{size}</p>
         </div>
       </div>
 
-      <div className='flex items-center gap-2'>
+      <div className='w-full md:w-auto flex items-center gap-2'>
         {result ? (
           <Button
             variant='success'

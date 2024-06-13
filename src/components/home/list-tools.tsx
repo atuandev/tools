@@ -4,14 +4,14 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 
 import { Input } from '@/components/ui/input'
-import { TOOLS } from '@/lib/constants'
+import { LIST_TOOLS } from '@/lib/constants'
 import { Tool } from '@/lib/types'
 import { ListCardTools } from './list-card-tools'
 
 export function ListTools() {
   const [value, setValue] = useState('')
 
-  const filter = (tool: Tool): boolean =>
+  const filterTools = (tool: Tool): boolean =>
     tool.label.toLowerCase().includes(value.toLowerCase()) ||
     tool.keywords.some(keyword =>
       keyword.toLowerCase().includes(value.toLowerCase())
@@ -34,7 +34,10 @@ export function ListTools() {
     >
       <div className='flex flex-col items-start'>
         <Input
-          className='bg-background/50 backdrop-blur-sm'
+          className='bg-background/50 backdrop-blur-[8px]'
+          style={{
+            WebkitBackdropFilter: 'blur(8px)'
+          }}
           placeholder='Search'
           value={value}
           onChange={e => setValue(e.target.value)}
@@ -42,18 +45,20 @@ export function ListTools() {
 
         <div id='get-started' className='my-12 w-full space-y-6 scroll-mt-20'>
           {value
-            ? TOOLS.filter(t => t.links.some(tool => filter(tool))).map(t => {
-                const { label, links } = t
-                const filtered = links.filter(tool => filter(tool)) as Tool[]
+            ? LIST_TOOLS.filter(list =>
+                list.tools.some(tool => filterTools(tool))
+              ).map(list => {
+                const { label, tools } = list
+                const filtered = tools.filter(tool => filterTools(tool))
 
                 return (
                   <ListCardTools key={label} tools={filtered} title={label} />
                 )
               })
-            : TOOLS.map(tool => {
-                const { label, links } = tool
+            : LIST_TOOLS.map(tool => {
+                const { label, tools } = tool
 
-                return <ListCardTools key={label} tools={links} title={label} />
+                return <ListCardTools key={label} tools={tools} title={label} />
               })}
         </div>
       </div>

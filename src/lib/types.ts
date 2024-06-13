@@ -1,5 +1,10 @@
 import { LucideIcon } from "lucide-react"
 
+export type ListTools = {
+  label: string
+  tools: Tool[]
+}
+
 export type Tool = {
   label: string
   link: string

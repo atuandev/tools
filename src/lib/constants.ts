@@ -5,6 +5,7 @@ import {
   PipetteIcon,
   TextIcon
 } from 'lucide-react'
+import { ListTools } from '@/lib/types'
 
 export const SITE_URL =
   process.env.NODE_ENV === 'production'
@@ -16,10 +17,10 @@ export const SITE_TITLE = 'Tools Online'
 export const SITE_DESCRIPTION =
   'A collection of free tools created by Atuandev.'
 
-export const TOOLS = [
+export const LIST_TOOLS: ListTools[] = [
   {
     label: 'Converter',
-    links: [
+    tools: [
       {
         label: 'Color Converter',
         link: '/convertor/color-converter',
@@ -38,7 +39,7 @@ export const TOOLS = [
   },
   {
     label: 'Calculator',
-    links: [
+    tools: [
       {
         label: 'Word Counter',
         link: '/calculator/word-counter',
@@ -50,7 +51,7 @@ export const TOOLS = [
   },
   {
     label: 'Generator',
-    links: [
+    tools: [
       {
         label: 'Password Generator',
         link: '/generator/password-generator',
@@ -62,7 +63,7 @@ export const TOOLS = [
   },
   {
     label: 'Tester',
-    links: [
+    tools: [
       {
         label: 'Keyboard Tester',
         link: '/tester/keyboard-tester',

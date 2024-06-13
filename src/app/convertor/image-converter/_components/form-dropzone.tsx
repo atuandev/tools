@@ -124,16 +124,16 @@ export function FormDropzone() {
     <div className='w-full'>
       <div
         {...getRootProps()}
-        className='hover:bg-muted my-12 flex cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed px-6 py-8 transition-colors duration-300 shadow-sm'
+        className='hover:bg-muted my-12 flex cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed px-4 py-6 md:px-6 md:py-8 transition-colors duration-300 shadow-sm'
       >
         <input {...getInputProps()} />
         <ImageIcon size={48} />
-        <p>Drop some images here, or click to select files.</p>
+        <p className='text-xs sm:text-base'>Drop some images here, or click to select files.</p>
       </div>
 
       {files.length > 0 && (
         <div className='space-y-4'>
-          <div className='flex items-center justify-between gap-4'>
+          <div className='flex items-center flex-wrap md:justify-between gap-4'>
             <div className='flex gap-2 md:gap-3 items-center'>
               <div>Convert all to</div>
               <Select
