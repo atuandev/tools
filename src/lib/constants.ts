@@ -5,7 +5,7 @@ import {
   PipetteIcon,
   TextIcon
 } from 'lucide-react'
-import { ListTools } from '@/lib/types'
+import { KeyType, ListTools } from '@/lib/types'
 
 export const SITE_URL =
   process.env.NODE_ENV === 'production'

@@ -1,4 +1,4 @@
-import { LucideIcon } from "lucide-react"
+import { LucideIcon } from 'lucide-react'
 
 export type ListTools = {
   label: string
@@ -35,3 +35,11 @@ export const fileOptions = [
   { label: 'SVG', value: 'svg' },
   { label: 'ICO', value: 'ico' }
 ] as const
+
+export type KeyType = {
+  keyName: string
+  id?: number
+  code?: string
+  active?: boolean
+  style?: React.CSSProperties
+}
