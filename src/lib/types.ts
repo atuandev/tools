@@ -43,3 +43,8 @@ export type KeyType = {
   active?: boolean
   style?: React.CSSProperties
 }
+
+export type QRCodeOption = {
+  label: string
+  icon: LucideIcon,
+}

@@ -25,7 +25,7 @@ export function Container({ className, children }: ContainerProps) {
         duration: 0.5
       }}
     >
-      <div className={cn('mx-auto min-h-[calc(100vh-312px)] py-10', className)}>
+      <div className={cn('mx-auto min-h-[calc(100vh-312px)] py-5', className)}>
         {children}
       </div>
     </motion.div>

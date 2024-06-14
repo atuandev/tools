@@ -3,9 +3,10 @@ import {
   KeyIcon,
   KeyboardIcon,
   PipetteIcon,
+  QrCodeIcon,
   TextIcon
 } from 'lucide-react'
-import { KeyType, ListTools } from '@/lib/types'
+import { ListTools } from '@/lib/types'
 
 export const SITE_URL =
   process.env.NODE_ENV === 'production'
@@ -58,6 +59,13 @@ export const LIST_TOOLS: ListTools[] = [
         keywords: ['Generator', 'Password', 'Random'],
         color: '#f783ac',
         icon: KeyIcon
+      },
+      {
+        label: 'QR Code Generator',
+        link: '/generator/qr-code-generator',
+        keywords: ['Generator', 'QR', 'Code', 'Barcode'],
+        color: '#0891b2',
+        icon: QrCodeIcon
       }
     ]
   },
