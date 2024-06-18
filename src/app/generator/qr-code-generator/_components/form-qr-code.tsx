@@ -1,26 +1,30 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
+import Image from 'next/image'
 import QrCode from 'qrcode'
+import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
+import { z } from 'zod'
 
+import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { Form } from '@/components/ui/form'
 import { QRCodeOption } from '@/lib/types'
 import {
+  CopyIcon,
   ImageIcon,
   LinkIcon,
   MailIcon,
   MessageSquareTextIcon,
+  SaveIcon,
   TextIcon,
   WifiIcon
 } from 'lucide-react'
-import { QRCodeOptionItem } from './qr-code-option-item'
-import { useState } from 'react'
-import { FormQRCodeURL } from './form-qr-code-url'
+import { useRef, useState } from 'react'
 import { FormQRCodeText } from './form-qr-code-text'
-import { Form } from '@/components/ui/form'
-import Image from 'next/image'
+import { FormQRCodeURL } from './form-qr-code-url'
+import { QRCodeOptionItem } from './qr-code-option-item'
 
 const LIST_QR_CODE_OPTIONS: QRCodeOption[] = [
   {
@@ -53,13 +57,14 @@ const formSchema = z.object({
   url: z.string().url()
 })
 
-const SIZE = 400
+const IMAGE_SIZE = 400
 
 export function FormQRCode() {
   const [qrCodeURL, setQRCodeURL] = useState<string>('')
   const [activeOption, setActiveOption] = useState<QRCodeOption>(
     LIST_QR_CODE_OPTIONS[0]
   )
+  const imageRef = useRef<HTMLImageElement>(null)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -72,10 +77,40 @@ export function FormQRCode() {
     setActiveOption(option)
   }
 
+  const handleCopyImage = () => {
+    if (!!imageRef.current) {
+      const canvas: HTMLCanvasElement = document.createElement('canvas')
+      canvas.width = IMAGE_SIZE
+      canvas.height = IMAGE_SIZE
+
+      canvas
+        .getContext('2d')
+        ?.drawImage(imageRef.current, 0, 0, IMAGE_SIZE, IMAGE_SIZE)
+      canvas.toBlob((blob: any) => {
+        navigator.clipboard.write([
+          new ClipboardItem({
+            'image/png': blob
+          })
+        ])
+      }, 'image/png')
+
+      toast.success('Copied to clipboard!')
+    }
+  }
+
+  const handleDownloadImage = () => {
+    if (!!imageRef.current) {
+      const link = document.createElement('a')
+      link.href = imageRef.current.src
+      link.download = 'qr-code.png'
+      link.click()
+    }
+  }
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const { url } = values
     const qrCodeDataUrl = await QrCode.toDataURL(url, {
-      width: SIZE,
+      width: IMAGE_SIZE
     })
     setQRCodeURL(qrCodeDataUrl)
   }
@@ -107,16 +142,28 @@ export function FormQRCode() {
 
       {/* QR Image */}
       <Card
-        className='p-4 min-h-[400px] w-full md:w-[500px] flex flex-col items-center'
+        className='p-4 min-h-[400px] w-full md:w-[500px] flex flex-col items-center gap-4'
         style={{ WebkitBackdropFilter: 'blur(8px)' }}
       >
-        <Image 
+        <Image
+          ref={imageRef}
           src={qrCodeURL || '/images/qr-code-atuandev.png'}
-          width={SIZE}
-          height={SIZE}
+          width={IMAGE_SIZE}
+          height={IMAGE_SIZE}
           alt='QR Code'
           className='rounded-md border shadow-sm'
         />
+
+        <div className='flex items-center justify-center gap-2'>
+          <Button variant='success' onClick={handleDownloadImage}>
+            <SaveIcon className='size-5 mr-2' />
+            Download
+          </Button>
+          <Button variant='outline' onClick={handleCopyImage}>
+            <CopyIcon className='size-5 mr-2' />
+            Copy
+          </Button>
+        </div>
       </Card>
     </div>
   )
