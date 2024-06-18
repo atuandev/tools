@@ -56,7 +56,8 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     siteName: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    locale: 'vn_VN'
+    locale: 'vn_VN',
+    images: 'https://raw.githubusercontent.com/atuandev/tools/master/public/preview/home-preview.png'
   },
   icons: {
     icon: '/favicon/favicon.ico',

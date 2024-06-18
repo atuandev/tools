@@ -84,10 +84,10 @@ export function FormQRCode() {
     <div className='w-full mt-12 flex flex-wrap md:flex-nowrap items-center justify-center gap-4'>
       {/* Form */}
       <Card
-        className='p-4 h-[480px] w-full'
+        className='p-4 min-h-[400px] w-full'
         style={{ WebkitBackdropFilter: 'blur(8px)' }}
       >
-        <div className='grid gap-4 md:grid-cols-6 grid-cols-4 mb-6'>
+        <div className='grid gap-4 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 grid-cols-3 mb-6'>
           {LIST_QR_CODE_OPTIONS.map(option => (
             <QRCodeOptionItem
               key={option.label}
@@ -107,14 +107,15 @@ export function FormQRCode() {
 
       {/* QR Image */}
       <Card
-        className='p-4 h-[480px] w-full md:w-[500px] flex flex-col items-center'
+        className='p-4 min-h-[400px] w-full md:w-[500px] flex flex-col items-center'
         style={{ WebkitBackdropFilter: 'blur(8px)' }}
       >
         <Image 
-          src={qrCodeURL}
+          src={qrCodeURL || '/images/qr-code-atuandev.png'}
           width={SIZE}
           height={SIZE}
           alt='QR Code'
+          className='rounded-md border shadow-sm'
         />
       </Card>
     </div>

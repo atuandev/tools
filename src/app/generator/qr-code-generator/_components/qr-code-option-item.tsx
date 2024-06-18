@@ -20,8 +20,8 @@ export function QRCodeOptionItem({
     <div
       role='button'
       className={cn(
-        'flex gap-2 items-center justify-center p-2 hover:bg-neutral-100 hover:dark:bg-gray-800 rounded-md shadow-sm',
-        isActive ? 'bg-neutral-100 dark:bg-gray-800' : ''
+        'flex gap-2 items-center justify-center p-2 hover:bg-neutral-200 hover:dark:bg-gray-800 rounded-md shadow-sm min-w-fit flex-1',
+        isActive ? 'bg-neutral-200 dark:bg-gray-800' : ''
       )}
       onClick={() => onOptionClick(option)}
     >
