@@ -46,7 +46,11 @@ export function Hero() {
         <p className='leading-6 text-muted-foreground tracking-wide'>
           Here is a collection of online free tools I have frequently used.
         </p>
-        <Button variant='gooeyLeft'>
+        <Button
+          variant='gooeyLeft'
+          size='lg'
+          className='text-lg font-semibold tracking-wider'
+        >
           <Link href='#get-started'>Get Started</Link>
         </Button>
       </motion.div>
