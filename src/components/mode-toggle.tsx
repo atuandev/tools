@@ -4,35 +4,37 @@ import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { Moon, Sun } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
-
 export function ModeToggle() {
-  const { setTheme, theme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
 
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  return (
-    <div>
-      {mounted && theme === 'light' ? (
-        <Button
-          variant='transparent'
-          size='icon'
+  if (!mounted) return <></>
+
+  if (resolvedTheme === 'light') {
+    return (
+      <div className='cursor-pointer rounded-md hover:bg-white/50 p-2'>
+        <Sun
+          color='#000000'
+          className='size-5'
           onClick={() => setTheme('dark')}
-        >
-          <Sun color='#000000' className='h-[1.2rem] w-[1.2rem]' />
-        </Button>
-      ) : (
-        <Button
-          variant='transparent'
-          size='icon'
+        />
+      </div>
+    )
+  }
+
+  if (resolvedTheme === 'dark') {
+    return (
+      <div className='cursor-pointer rounded-sm dark:hover:bg-white/20 p-2'>
+        <Moon
+          color='#ffffff'
+          className='size-5'
           onClick={() => setTheme('light')}
-        >
-          <Moon color='#ffffff' className='h-[1.2rem] w-[1.2rem]' />
-        </Button>
-      )}
-    </div>
-  )
+        />
+      </div>
+    )
+  }
 }
