@@ -2,11 +2,15 @@ import {
   ImageIcon,
   KeyIcon,
   KeyboardIcon,
+  LinkIcon,
+  MailIcon,
+  MessageSquareTextIcon,
   PipetteIcon,
   QrCodeIcon,
-  TextIcon
+  TextIcon,
+  WifiIcon
 } from 'lucide-react'
-import { ListTools } from '@/lib/types'
+import { ListTools, QRCodeOption } from '@/lib/types'
 
 export const SITE_URL =
   process.env.NODE_ENV === 'production'
@@ -80,5 +84,32 @@ export const LIST_TOOLS: ListTools[] = [
         icon: KeyboardIcon
       }
     ]
+  }
+]
+
+export const LIST_QR_CODE_OPTIONS: QRCodeOption[] = [
+  {
+    label: 'URL',
+    icon: LinkIcon
+  },
+  {
+    label: 'Text',
+    icon: TextIcon
+  },
+  {
+    label: 'Email',
+    icon: MailIcon
+  },
+  {
+    label: 'SMS',
+    icon: MessageSquareTextIcon
+  },
+  {
+    label: 'Wifi',
+    icon: WifiIcon
+  },
+  {
+    label: 'Image',
+    icon: ImageIcon
   }
 ]

@@ -1,8 +1,10 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { CopyIcon, SaveIcon } from 'lucide-react'
 import Image from 'next/image'
 import QrCode from 'qrcode'
+import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -10,51 +12,14 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
+import { LIST_QR_CODE_OPTIONS } from '@/lib/constants'
 import { QRCodeOption } from '@/lib/types'
-import {
-  CopyIcon,
-  ImageIcon,
-  LinkIcon,
-  MailIcon,
-  MessageSquareTextIcon,
-  SaveIcon,
-  TextIcon,
-  WifiIcon
-} from 'lucide-react'
-import { useRef, useState } from 'react'
 import { FormQRCodeText } from './form-qr-code-text'
 import { FormQRCodeURL } from './form-qr-code-url'
 import { QRCodeOptionItem } from './qr-code-option-item'
 
-const LIST_QR_CODE_OPTIONS: QRCodeOption[] = [
-  {
-    label: 'URL',
-    icon: LinkIcon
-  },
-  {
-    label: 'Text',
-    icon: TextIcon
-  },
-  {
-    label: 'Email',
-    icon: MailIcon
-  },
-  {
-    label: 'SMS',
-    icon: MessageSquareTextIcon
-  },
-  {
-    label: 'Wifi',
-    icon: WifiIcon
-  },
-  {
-    label: 'Image',
-    icon: ImageIcon
-  }
-]
-
 const formSchema = z.object({
-  url: z.string().url()
+  url: z.string().url().optional()
 })
 
 const IMAGE_SIZE = 400
@@ -109,6 +74,11 @@ export function FormQRCode() {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const { url } = values
+
+    if (!url) {
+      return
+    }
+
     const qrCodeDataUrl = await QrCode.toDataURL(url, {
       width: IMAGE_SIZE
     })
@@ -155,13 +125,13 @@ export function FormQRCode() {
         />
 
         <div className='flex items-center justify-center gap-2'>
-          <Button variant='success' onClick={handleDownloadImage}>
+          <Button variant='success' onClick={handleDownloadImage} size='sm'>
             <SaveIcon className='size-5 mr-2' />
-            Download
+            <p className='font-normal tracking-wide'>Download</p>
           </Button>
-          <Button variant='outline' onClick={handleCopyImage}>
+          <Button variant='outline' onClick={handleCopyImage} size='sm'>
             <CopyIcon className='size-5 mr-2' />
-            Copy
+            <p className='font-normal tracking-wide'>Copy</p>
           </Button>
         </div>
       </Card>

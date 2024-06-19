@@ -26,7 +26,7 @@ const WORDS = [
   {
     text: 'Tester',
     className:
-      'bg-clip-text text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
+      'bg-clip-text text-transparent bg-gradient-to-r from-[#26b868] to-[#1cb2e0]'
   }
 ]
 
@@ -35,17 +35,9 @@ export function Hero() {
     <div className='my-12 space-y-8'>
       <motion.div
         className='will-change-[transform,opacity] space-y-4'
-        initial={{
-          y: 40,
-          opacity: 0
-        }}
-        animate={{
-          y: 0,
-          opacity: 1
-        }}
-        transition={{
-          duration: 0.5
-        }}
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
         <h1 className='text-2xl md:text-4xl font-bold tracking-wide space-x-2'>
           <span>Collection of</span>

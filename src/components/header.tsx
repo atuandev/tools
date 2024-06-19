@@ -19,7 +19,7 @@ export function Header() {
         WebkitBackdropFilter: 'blur(10px)'
       }}
     >
-      <div className='mx-auto max-w-6xl flex items-center justify-between px-8 h-14'>
+      <div className='mx-auto max-w-6xl flex items-center justify-between px-4 md:px-8 h-14'>
         <Link href='/' aria-label='Home' title='Home'>
           <Logo />
         </Link>
