@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button'
 import { useOs } from '@/hooks'
 import { KeyType } from '@/lib/types'
 import { KeyButton } from './key-button'
+import { AlertCircle } from 'lucide-react'
+import AlertError from '@/components/alert-error'
 
 export function KeyboardLayout() {
   const [mounted, setMounted] = useState(false)
@@ -544,12 +546,13 @@ export function KeyboardLayout() {
 
   return (
     <div className='my-12'>
-      <div className='mb-6 flex items-center justify-center'>
+      <div className='mb-6 hidden lg:flex items-center justify-center'>
         <Button variant='outline' onClick={onReset}>
           Reset
         </Button>
       </div>
-      <div className='flex items-center justify-center'>
+      {/* Desktop */}
+      <div className='hidden lg:flex items-center justify-center'>
         {mounted && (
           <div className='flex gap-4'>
             <div className='flex flex-col gap-4'>
@@ -701,6 +704,10 @@ export function KeyboardLayout() {
             </div>
           </div>
         )}
+      </div>
+      {/* Mobile */}
+      <div className='flex lg:hidden'>
+        <AlertError message='Support for desktop only!' />
       </div>
     </div>
   )
